@@ -43,7 +43,7 @@ function App () {
         />
 
         <main className="container">
-        <Routes basename="/E-commerce-App">
+        <Routes basename="/E-Commerce-App" >
           <Route path='/form' element={<Form/>}/>
 
           <Route  path='/'  element={<Store />} />
@@ -59,6 +59,7 @@ function App () {
           
           <Route  path='/notfound'  element={<NotFound/>} />
           <Route  path='*'  element={<Navigate to="/notfound" replace/>} />
+          <Route  path='E-Commerce-App'  element={<Navigate to="/" replace/>} />
          
 
         </Routes>

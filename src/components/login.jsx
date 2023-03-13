@@ -42,7 +42,7 @@ async function login(data){
     //2- notification about success registration 
       
     //3- go to  store and add params
-    setTimeout(()=>{navigate('/store/user')},50)
+    setTimeout(()=>{navigate('/')},50)
     
 
   }else{
@@ -57,15 +57,7 @@ async function login(data){
 
 }
 async function serverVaildation(emailValue,passwordValue){
-  // const response=await axios.get("http://localhost:3001/users")
-  // const users=response.data;
-  // let user=users.filter(user => user.email==emailValue&&user.password==passwordValue)[0]
-  // if(user.length===undefined){
-  //   return undefined
-  // }else{
-  //   return user
 
-  // }
   const response=await axios.get(`${serverApi}/users?email=${emailValue}&password=${passwordValue}`)
   const user=response.data;
   if(user.length==1){

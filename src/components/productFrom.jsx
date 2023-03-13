@@ -11,7 +11,6 @@ function ProductForm() {
   const[showLoading,setShowLoading]=useState(false)
   const {register,handleSubmit,watch,setValue,formState: { errors }} = useForm({name: "",price: ""});
 
-  // console.log(image.image)
   const navigate=useNavigate()
   function backToSetting(){ 
     return navigate('/setting',{replace:true})
@@ -132,11 +131,9 @@ function ProductForm() {
   const formData=new FormData()
   function handlePreviewFile(e){
     const file =e.target.files[0]
-    // console.log(file)
     formData.append("file",file)
     formData.append("upload_preset","p6alrljs")
-    // console.log(formData.has('file'))
-    // console.log(formData.get('file'))
+
 
 
   }
@@ -224,7 +221,7 @@ function ProductForm() {
 
           <div className="input-group input-group-default ">
             <span className="input-group-text" id="inputGroup-sizing-default">Price</span>
-            <input type="number" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" {...register("price", {required: "price is required!"})} />  
+            <input type="number" step="any" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" {...register("price", {required: "price is required!"})} />  
           </div>
 
           <p className="text-danger fs-8  mb-3">{errors.price?.message}</p>

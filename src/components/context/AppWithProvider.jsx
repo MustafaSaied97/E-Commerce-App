@@ -19,8 +19,6 @@ export function AppWithProvider() {
       
 
         async function fetchData() {
-          // console.log("local")
-          // console.log(localStorage.length)
 
           try{
 
@@ -33,8 +31,7 @@ export function AppWithProvider() {
             if(localStorage.length!==0&&localStorage.getItem('user')!==null){
               let userInLocalStorage=JSON.parse(localStorage.getItem('user'))
               setUser(userInLocalStorage)
-              // console.log("user")
-              // console.log(user)
+          
 
             }else{
               setUser({name:'',email:'',password:'',products:[],id:''})
@@ -51,12 +48,7 @@ export function AppWithProvider() {
       
       
       },[]); 
-      // console.log(user.products)
-      
-      // console.log('state.products')
-      // console.log(state.products)
-      // console.log('user.products')
-      // console.log(user.products)
+
 
  
     return (

@@ -31,8 +31,8 @@ export default function Product(props) {
     //edit
     userProducts[index].count++;
     //edit and update -with setUser
-     //changes in user products by add all products that have incart equal true
-     //i am using optimistic update to make the app faster
+    //changes in user products by add all products that have incart equal true
+    //i am using optimistic update to make the app faster
     //1-update UI
     localStorage.setItem('user',JSON.stringify({...user,products:userProducts}))
     setUser({...user,products:userProducts})

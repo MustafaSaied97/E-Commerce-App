@@ -229,28 +229,36 @@ function Store (){
               {
                 products.map((product)=>{
                   return(
-                    <div className="col-lg-3 col-md-5 col-sm-6 mb-4 " key={product.id}>
+                    <div className="col-lg-3 col-md-5 col-sm-6 mb-4  p-4 " key={product.id}>
                       
-                      <div className=" rounded-5 shadow bg-white text-center h-100">
-                        <div className="  d-flex justify-content-center align-items-center">
-                          <img src={product.imgSrc} alt="Card" className="card-img"  style={{height: "150px",objectFit: "contain"}} />
+                      <div className=" rounded-5 shadow bg-white text-center h-100 d-flex flex-column justify-content-between">
+
+                        {/* image */}
+                        <div className="p-2">
+                          <img src={product.imgSrc} alt="Card" className="card-img"  style={{maxHeight: "150px",objectFit: "contain"}} />
                         </div>
-                        <div className="p-4" >
 
-                          <h5>{product.name}</h5>
-
-                          <div className="rating-box d-flex flex-column">
-							      <div className="rating-box__items">
-							      	<span className="rating-stars text-warning">
-                        {ratingStars(product.stars)}
-							      	</span>
-                      <span className="ml-1"><b>{product.stars}</b></span>
-							      </div>
-							      <a href="#!" className="text-muted">({product.ratings} ratings & {product.Reviews} Reviews)</a>
-							    </div>
-                       
+                        {/* other */}
+                        <div className="p-4 pb-3 align-self-end " >
+                          {/* name */}
+                          <div style={{maxHeight: "50px",overflow:"hidden",textOverflow:"ellipsis"}}>
+                            <h5>{product.name}</h5>
+                          </div>
                           
+                          {/* stars&rating&views */}
+                          <div className="rating-box d-flex flex-column">
+							              <div className="rating-box__items">
+							              	<span className="rating-stars text-warning">
+                                {ratingStars(product.stars)}
+							              	</span>
+                              <span className="ml-1"><b>{product.stars}</b></span>
+							              </div>
+							              <a href="#!" className="text-muted">({product.ratings} ratings & {product.Reviews} Reviews)</a>
+							            </div>
+                       
+                          {/* price */}
                           <p className="text-muted">price: {product.price} $</p>
+                          {/* add tocart */}
                           <hr/>
                           {
                             user.id==''?

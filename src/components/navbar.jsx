@@ -117,7 +117,11 @@ function  NavBar () {
                           <button className="btn btn-danger fs-6" onClick={warningMessage}>Delete Account</button>
                           </span>
                           <span className='dropdown-item'>
-                             <button className="btn btn-success fs-6"onClick={handleLogut}>logout</button>
+                             <button className="btn btn-success fs-6 d-flex justify-content-center align-items-center"onClick={handleLogut}>
+                                 logout 
+                                 <i className="fa-solid fa-door-open ps-1"></i>
+                                 <i className="fa-solid fa-arrow-right"style={{fontSize:".5rem"}}></i>
+                              </button>
                           </span>
                        </li>
                      </ul>
@@ -127,7 +131,7 @@ function  NavBar () {
     
                {/* ----------------------3_3------------- */}
                <li className="nav-item">
-                  <NavLink className="nav-link" to="/store">
+                  <NavLink className="nav-link" to="/">
 
                        
                   Store <i className="fa-solid fa-store fs-5"></i> 

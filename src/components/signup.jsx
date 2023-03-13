@@ -57,23 +57,7 @@ export default function Login(props) {
 
 
   async function serverVaildation(emailValue){
-    // const response=await axios.get("http://localhost:3001/users")
-    // const users=response.data;
 
-    // let isUserExist=!users.every(user => {
-    //   if(user.email===emailValue){
-
-    //     return false;
-    //   }
-    //   return true;
-    // })
-
-
-    // if(isUserExist){
-    //   return true
-    // }else{
-    //   return false
-    // }
     const response=await axios.get(`${serverApi}/users?email=${emailValue}`)
     const user=response.data;
     if(user.length!==0){

@@ -99,7 +99,7 @@ function Setting() {
             return (
               <tr key={product.id} className="shadow bg-white  h-100 ">
                 <td>{product.category}</td>
-                <td><img src={product.imgSrc} className="rounded-5 "style={{width: "100px"}} alt="..."/></td>
+                <td><img src={product.imgSrc} className="rounded-3 "style={{width: "50px"}} alt="..."/></td>
                 <td>{product.name}</td>
                 <td>{product.price} <i className="fa-solid fa-dollar-sign"></i></td>
                 <td>

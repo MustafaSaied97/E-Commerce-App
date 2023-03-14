@@ -1,5 +1,5 @@
 // -------------react libraries----------------------------------------------------------------------------------------------
-import React ,{useState, useEffect ,useContext}from 'react';
+import React ,{useContext}from 'react';
 import {Routes,Route,Navigate} from "react-router-dom";
 //------------------components----------------------------------------------------------------------------------------------------------
 import {DataContext} from "./context/AppWithProvider"
@@ -12,12 +12,12 @@ import  NavBar from './navbar'
 
 import NotFound from './notFound';
 import Store from './store';
-import Form from './form';
-import Setting from './setting';
-import ProductForm from './productFrom';
+import Form from './form components/form';
+import Setting from './admin components/setting';
+import ProductForm from './admin components/productFrom';
 
 function App () {
-  // const [state,setState]=useState({products:[]} )
+  // 
   const {state,setState}=useContext(DataContext)
 
   function handleChangeInCart(product){
@@ -43,7 +43,7 @@ function App () {
         />
 
         <main className="container">
-        <Routes basename="/E-Commerce-App" >
+        <Routes>
           <Route path='/form' element={<Form/>}/>
 
           <Route  path='/'  element={<Store />} />

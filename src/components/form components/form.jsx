@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+// libraries
+import React, { useState } from "react";
+// components
 import Login from "./login";
 import Signup from "./signup";
 

@@ -1,8 +1,9 @@
+// libraries
 import React,{useContext,useRef,useState,useMemo,useEffect}  from "react";
-import { DataContext } from './context/AppWithProvider';
 import axios from 'axios';
-import CustomToast from './react-bootstrap-component/customToast';
-import Toast from 'react-bootstrap/Toast';
+// components
+import { DataContext } from './context/AppWithProvider';
+
 
 function Store (){
   const {serverApi,user,setUser,state,setState}=useContext(DataContext)
@@ -15,24 +16,19 @@ function Store (){
   
   const filteredProducts=useMemo(()=>genericFiltration([...state.products],productPrice,productCategory,productName,productNameInput) , [productPrice,productCategory,productName])
 
-  
 
 
  //control what user see for products if use filtering system
   const allProducts=[...state.products]
   let products;
-  if(productPrice.min==''&&productPrice.max==''&&productCategory=='Choose...'){
+  if(productName==''&&productPrice.min==''&&productPrice.max==''&&productCategory=='Choose...'){
     products=allProducts
   }else{
     products=filteredProducts
   } 
-  function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
+
+
+ 
 
   const [showSearchNotFound,setShowSearchNotFound]=useState(false)
   const [prevState_showSearchNotFound,setPrevState_showSearchNotFound]=useState(false)//for stroing previouse state of showSearchNotFound 

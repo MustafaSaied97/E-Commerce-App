@@ -1,10 +1,12 @@
-import React, { useState, useEffect ,useContext} from "react";
+// libraries
+import React, { useContext} from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { DataContext } from './context/AppWithProvider';
 import { useNavigate } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 
+// components
+import { DataContext } from '../context/AppWithProvider';
 
 
 export default function Login(props) {
@@ -42,7 +44,7 @@ async function login(data){
     //2- notification about success registration 
       
     //3- go to  store and add params
-    setTimeout(()=>{navigate('/')},50)
+    setTimeout(()=>{navigate('/',{replace:true})},50)
     
 
   }else{

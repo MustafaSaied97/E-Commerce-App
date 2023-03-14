@@ -1,10 +1,11 @@
 // -------------react libraries----------------------------------------------------------------------------------------------
 import React,{useContext,useRef } from 'react'
 import { NavLink} from 'react-router-dom'
-import { DataContext } from './context/AppWithProvider';
 import axios from "axios"
 import Tippy from '@tippyjs/react';
 import CustomToast from "./react-bootstrap-component/customToast";
+// -------------components----------------------------------------------------------------------------------------------
+import { DataContext } from './context/AppWithProvider';
 
 
 function  NavBar () {

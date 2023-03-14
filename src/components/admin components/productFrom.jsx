@@ -1,9 +1,10 @@
+// libraries
 import React, { useState, useEffect,useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useParams,useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { DataContext } from './context/AppWithProvider';
-
+// components
+import { DataContext } from '../context/AppWithProvider';
 
 function ProductForm() {
   const {serverApi,cloudApi,state,setState,user,setUser}=useContext(DataContext)

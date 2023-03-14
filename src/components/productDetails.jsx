@@ -1,7 +1,5 @@
-import React,{useContext} from 'react';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
-import qs from 'query-string'
-import { DataContext } from './context/AppWithProvider';
+import React from 'react';
+import {useParams, useNavigate } from 'react-router-dom';
 
 
 

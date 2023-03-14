@@ -1,9 +1,10 @@
-import React, { useState, useEffect,useRef ,useContext} from "react";
+// libraries
+import React, { useRef ,useContext} from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import CustomToast from "./react-bootstrap-component/customToast";
-import {DataContext} from "./context/AppWithProvider"
-
+// components
+import CustomToast from "../react-bootstrap-component/customToast";
+import {DataContext} from "../context/AppWithProvider"
 
 
 export default function Login(props) {

@@ -1,8 +1,10 @@
+// libraries
 import React,{useContext,useRef,useState} from "react";
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import {DataContext} from "./context/AppWithProvider"
-import CustomToast from "./react-bootstrap-component/customToast";
+import CustomToast from "../react-bootstrap-component/customToast";
+// components
+import {DataContext} from "../context/AppWithProvider"
 
 function Setting() {
   const {serverApi,state,setState,user,setUser}=useContext(DataContext)

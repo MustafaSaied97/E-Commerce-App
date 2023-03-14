@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { DataContext } from "./context/AppWithProvider";
 import axios from 'axios'
-import Tippy from '@tippyjs/react';
 
 export default function Product(props) {
   const { serverApi,user,setUser } = useContext(DataContext);

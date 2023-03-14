@@ -238,7 +238,7 @@ function Store (){
                         </div>
 
                         {/* other */}
-                        <div className="p-4 pb-3 " >
+                        <div className="p-4 pb-3 align-self-end " >
                           {/* name */}
                           <div style={{maxHeight: "50px",overflow:"hidden",textOverflow:"ellipsis"}}>
                             <h5>{product.name}</h5>

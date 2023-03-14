@@ -1,6 +1,6 @@
 // -------------react libraries----------------------------------------------------------------------------------------------
 import React,{useContext,useRef } from 'react'
-import { NavLink,useNavigate} from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 import axios from "axios"
 import Tippy from '@tippyjs/react';
 import CustomToast from "./react-bootstrap-component/customToast";
@@ -15,12 +15,11 @@ function  NavBar () {
    const {serverApi,control,user,setUser}=useContext(DataContext)
 
    let productsInCart=user.products
-   let navigate= useNavigate()
+   
    function handleLogut(){
       localStorage.removeItem('user')
       setUser({name:'',email:'',password:'',products:[],id:''})
-     
-      navigate('/',{replace:true})
+      
 
    }
 

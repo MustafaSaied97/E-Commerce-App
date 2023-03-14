@@ -20,7 +20,5 @@ root.render(
   <HashRouter>
     <AppWithProvider/>
   </HashRouter>
- 
-
 );
 

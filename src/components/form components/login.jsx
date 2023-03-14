@@ -112,9 +112,9 @@ async function serverVaildation(emailValue,passwordValue){
 
                 <button type="submit" className="btn btn-primary mt-1">Login</button>   
                 <p className="text-muted text-center">New to our platform? <a href="#!" onClick={handleFormState}>Signup</a></p>
-                <Tippy content={<span className="btn btn-dark">Tooltip</span>}>
+                {/* <Tippy content={<span className="btn btn-dark">Tooltip</span>}>
                   <button onClick={()=>setControl('admin')}>admin</button>
-                </Tippy>
+                </Tippy> */}
 
               </form>
 

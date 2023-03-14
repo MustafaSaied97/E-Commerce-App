@@ -128,14 +128,14 @@ function Store (){
         </div>
 
 
-        <div  className=" container mt-5 d-flex justify-content-center gap-5" >
+        <div  className=" container mt-5 d-flex justify-content-center align-items-center gap-5 " >
           
-          <div className=" d-flex flex-column position-relative " >
+          <div className=" d-flex flex-column position-relative " style={{width:"800px"}} >
 
             <div className="input-group  "style={{height:'36px'}} >
               <input type="text" className="form-control" placeholder="Search..." aria-label="Productname" aria-describedby="basic-addon1" value={productNameInput} onChange={(e)=> {setProductNameInput(e.target.value);setShowSearchList(true);setShowSearchNotFound(value)}}  />
               <span 
-                className="input-group-text  btn btn-secondary opacity-50" 
+                className="input-group-text  btn btn-secondary opacity-50 " 
                 id="basic-addon1" 
                 onClick={()=>{ setProductName(productNameInput)}}
               >
@@ -148,7 +148,7 @@ function Store (){
                 <ul className="list-group  list-group-flush border border-5 border-top-0 rounded  border-top-0 position-absolute  w-100" style={{zIndex:'1',marginTop:'36px'}} onBlur={(e)=>setShowSearchList(false)}>
 
                   { allProducts.map((product)=>{  
-                     if(product.name.includes(productNameInput) && productNameInput!==''){
+                     if(product.name.toLocaleLowerCase().includes(productNameInput.toLocaleLowerCase()) && productNameInput!==''){
                       return <li 
                         key={product.id}  
                         className="list-group-item list-group-item-action" 
@@ -171,8 +171,11 @@ function Store (){
 
           
 
-          <div  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
-            <span className="btn btn-secondary opacity-50" id="basic-addon1">filter <i className="fa-solid fa-sliders"></i></span> 
+          <div  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"  >
+            <span className="btn btn-secondary opacity-50  " id="basic-addon1" >
+              filter 
+              <i className="fa-solid fa-sliders ms-1"></i>
+              </span> 
           </div>
 
         </div>
@@ -334,7 +337,7 @@ function genericFiltration(allProducts,productPrice,productCategory,productName,
 
 
    let priceCond=(price>=minPrice && price<=maxPrice)||(isNaN(maxPrice)&&price>=minPrice)||(isNaN(minPrice)&&price<=maxPrice)
-   let nameCond=product.name==productName
+   let nameCond=product.name.toLocaleLowerCase().includes(productName.toLocaleLowerCase())
    let categCond=product.category==productCategory
 
    let productPriceCond=productPrice.min!==''||productPrice.max!==''?'domy':''

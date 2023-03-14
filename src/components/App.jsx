@@ -4,17 +4,17 @@ import {Routes,Route,Navigate} from "react-router-dom";
 //------------------components----------------------------------------------------------------------------------------------------------
 import {DataContext} from "./context/AppWithProvider"
 
-
-
-import  ShoppingCart from './shoppingCart'
-import  ProductDetails from './productDetails'
 import  NavBar from './navbar'
-
 import NotFound from './notFound';
 import Store from './store';
-import Form from './form components/form';
-import Setting from './admin components/setting';
-import ProductForm from './admin components/productFrom';
+
+import  ShoppingCart from './shopping-cart-components/shoppingCart'
+import  ProductDetails from './shopping-cart-components/productDetails'
+
+import Form from './form-components/form';
+
+import Setting from './admin-components/setting';
+import ProductForm from './admin-components/productFrom';
 
 function App () {
   // 

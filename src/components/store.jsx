@@ -145,7 +145,7 @@ function Store (){
             </div >
          
               {  showSearchList?
-                <ul className="list-group  list-group-flush border border-5 border-top-0 rounded  border-top-0 position-absolute  w-100" style={{zIndex:'1',marginTop:'36px'}} onBlur={(e)=>setShowSearchList(false)}>
+                <ul className="list-group  list-group-flush border border-5 border-top-0 rounded  border-top-0 position-absolute  w-100" style={{zIndex:'1',marginTop:'36px',maxHeight: "400px",overflow:"auto",textOverflow:"ellipsis"}} onBlur={(e)=>setShowSearchList(false)}>
 
                   { allProducts.map((product)=>{  
                      if(product.name.toLocaleLowerCase().includes(productNameInput.toLocaleLowerCase()) && productNameInput!==''){
@@ -182,7 +182,7 @@ function Store (){
 
     
         <div className=" collapse" id="collapseExample">
-          <div className="container d-flex flex-lg-nowrap flex-wrap gap-1  w-50 mt-5 "  >
+          <div className="container d-flex flex-lg-nowrap flex-wrap    gap-1  mt-5   " style={{maxWidth:"800px"}} >
             <div className="input-group input-group-sm " >
               <span className="input-group-text "style={{padding:'5px'}}>Price Range $</span>
               <input 
@@ -240,8 +240,8 @@ function Store (){
                         {/* other */}
                         <div className="p-4 pb-3 " >
                           {/* name */}
-                          <div style={{maxHeight: "50px",overflow:"hidden",textOverflow:"ellipsis"}}>
-                            <h5>{product.name}</h5>
+                          <div >
+                            <h5 style={{maxHeight: "100px",overflow:"hidden",textOverflow:"ellipsis"}}>{product.name}</h5>
                           </div>
                           
                           {/* stars&rating&views */}
@@ -252,7 +252,7 @@ function Store (){
 							              	</span>
                               <span className="ml-1"><b>{product.stars}</b></span>
 							              </div>
-							              <a href="#!" className="text-muted">({product.ratings} ratings & {product.Reviews} Reviews)</a>
+							              <a  className="text-muted">({product.ratings} ratings & {product.Reviews} Reviews)</a>
 							            </div>
                        
                           {/* price */}

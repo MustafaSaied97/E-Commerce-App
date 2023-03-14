@@ -1,7 +1,7 @@
 // -------------react libraries-------------------------------------------------------------------------------------------------
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { DataContext } from "./context/AppWithProvider";
+import { DataContext } from "../context/AppWithProvider";
 import axios from 'axios'
 
 export default function Product(props) {
@@ -143,14 +143,16 @@ export default function Product(props) {
 							      	</span>
                       <span className="ml-1"><b>{product.stars}</b></span>
 							      </div>
-							      <a href="#!" className="text-muted">({product.ratings} ratings & {product.Reviews} Reviews)</a>
+							      <a  className="text-muted">({product.ratings} ratings & {product.Reviews} Reviews)</a>
 							    </div>
                           
                 <p className="text-muted">price: {product.price} $</p>
                 <hr />
-                <div className="d-flex  justify-content-around align-items-center ">
+
+
+                <div className="d-flex flex-wrap justify-content-around align-items-center ">
                   
-                    <div className=" bg-light rounded-2 ">
+                    <div className="d-flex flex-nowrap bg-light rounded-2  mb-2">
                       {product.messageFromAdmin==''?<>
                       
                         <button
@@ -178,13 +180,16 @@ export default function Product(props) {
                   </div>
 
 
+                  <div>
+                    <span onClick={() => handleChangeInCart(product)} className="btn btn-danger p-0 m-1">
+                      <i
+                        className="fas fa-trash m-2  m-0"
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                    </span>
 
-                  <span onClick={() => handleChangeInCart(product)} className="btn btn-danger p-0 m-1">
-                    <i
-                      className="fas fa-trash m-2  m-0"
-                      style={{ cursor: "pointer" }}
-                    ></i>
-                  </span>
+                  </div>
+             
                 </div>
           </div>
         </div>

@@ -181,7 +181,7 @@ function ProductForm() {
                 </span>
                 <span className="ml-1"><b>{}</b></span>
               </div>
-              <a href="#!" className="text-muted">({}ratings &  {}Reviews)</a>
+              <a  className="text-muted">({}ratings &  {}Reviews)</a>
             </div>
 
             <p className="text-muted">price:{watch('price')}  $</p>

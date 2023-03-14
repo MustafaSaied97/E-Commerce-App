@@ -2,7 +2,7 @@
 import React,{useContext} from 'react';
 //------------------components----------------------------------------------------------------------------------------------------------
 import Product from './product';
-import { DataContext } from './context/AppWithProvider';
+import { DataContext } from '../context/AppWithProvider';
 
 
 function ShoppingCart (){
@@ -35,7 +35,7 @@ function ShoppingCart (){
 
       <span className="badge bg-warning p-1 mt-2  text-dark">
         <span style={{fontSize:"1.1rem"}}>total price: </span>
-        <span style={{fontSize:"1.5rem"}}>{totalPrice} <i className="fa-solid fa-dollar-sign"></i></span> 
+        <span style={{fontSize:"1.5rem"}}>{Math.ceil(totalPrice)} <i className="fa-solid fa-dollar-sign"></i></span> 
       </span>
       <section className="main-content" style={{paddingTop: "50px",paddingBottom: "100px"}} >
 		    <div className="container">

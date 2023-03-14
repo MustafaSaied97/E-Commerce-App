@@ -9,10 +9,9 @@ import { DataContext } from './context/AppWithProvider';
 
 
 function  NavBar () {
+   const {serverApi,control,user,setUser}=useContext(DataContext)
    const toastRef=useRef()
    const delRef=useRef()
-
-   const {serverApi,control,user,setUser}=useContext(DataContext)
 
    let productsInCart=user.products
    let navigate= useNavigate()

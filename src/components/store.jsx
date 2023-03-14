@@ -145,8 +145,9 @@ function Store (){
             </div >
          
               {  showSearchList?
-                <ul className="list-group  list-group-flush border border-5 border-top-0 rounded  border-top-0 position-absolute  w-100" style={{zIndex:'1',marginTop:'36px',maxHeight: "400px",overflow:"auto",textOverflow:"ellipsis"}} onBlur={(e)=>setShowSearchList(false)}>
-
+            
+                <ul className="list-group  list-group-flush border border-2 border-top-0 rounded  border-top-0 position-absolute  w-100" style={{zIndex:'1',marginTop:'36px',maxHeight: "400px",overflow:"auto",textOverflow:"ellipsis"}} onBlur={(e)=>setShowSearchList(false)}>
+                     
                   { allProducts.map((product)=>{  
                      if(product.name.toLocaleLowerCase().includes(productNameInput.toLocaleLowerCase()) && productNameInput!==''){
                       return <li 
@@ -159,8 +160,9 @@ function Store (){
                      }
   
                    })}
-
+           
                 </ul>
+               
 
                 :
 

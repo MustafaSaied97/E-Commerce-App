@@ -2,8 +2,6 @@
 import React ,{useContext}from 'react';
 import {Routes,Route,Navigate} from "react-router-dom";
 //------------------components----------------------------------------------------------------------------------------------------------
-import {DataContext} from "./context/AppWithProvider"
-
 import  NavBar from './navbar'
 import NotFound from './notFound';
 import Store from './store';
@@ -17,30 +15,12 @@ import Setting from './admin-components/setting';
 import ProductForm from './admin-components/productFrom';
 
 function App () {
-  // 
-  const {state,setState}=useContext(DataContext)
 
-  function handleChangeInCart(product){
-    //clone
-    let products=[...state.products]
-    //deep clone
-    let index=products.indexOf(product)
-    //edit
-    products[index].inCart=!products[index].inCart
 
-    //update -with setState
-    setState({products: products}) //or  setState({products})
-  }
-
-  
-
-  
     return (
       <React.Fragment>
 
-        <NavBar
-          products={ state.products}
-        />
+        <NavBar/>
 
         <main className="container">
         <Routes>

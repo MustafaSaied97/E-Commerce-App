@@ -83,7 +83,7 @@ function ProductForm() {
       products=products.map((product)=>{
         if(product.id==id){
           index=products.indexOf(product)
-          product.category=product.category
+          product.category=data.category
           product.name=data.name;
           product.price=data.price;
           product.imgSrc=image
@@ -120,6 +120,20 @@ function ProductForm() {
         })
      
       })
+      //handle changes in users products
+      if(user.name=='anonymous'){
+        user.products.map((userProduct)=>{
+          if(userProduct.id==id){
+            userProduct.category=data.category
+            userProduct.name=data.name;
+            userProduct.price=data.price;
+            userProduct.imgSrc=image
+          } 
+          return   userProduct
+        })
+        localStorage.setItem("user",JSON.stringify(user))
+        setUser(user)
+      }
    
     }catch{
       alert("cant edit database")

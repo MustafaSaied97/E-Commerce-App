@@ -11,7 +11,7 @@ export const DataContext=React.createContext({
 export function AppWithProvider() {
   const {serverApi,cloudApi}=useContext(DataContext)
     const [state,setState]=useState({products:[]} )
-    const [user,setUser]=useState({name:'',email:'',password:'',products:[],id:''})
+    const [user,setUser]=useState({name:'anonymous',email:'',password:'',products:[],id:''})
     const [control,setControl]=useState('user')
 
 
@@ -27,14 +27,14 @@ export function AppWithProvider() {
 
             //get user id from local sotrage that i have sotred in it after login then call server to get user data
             
-  
             if(localStorage.length!==0&&localStorage.getItem('user')!==null){
               let userInLocalStorage=JSON.parse(localStorage.getItem('user'))
               setUser(userInLocalStorage)
           
-
             }else{
-              setUser({name:'',email:'',password:'',products:[],id:''})
+              //reset local storage with default user 
+              localStorage.setItem("user",JSON.stringify(user))
+
             }
 
           }catch(e){

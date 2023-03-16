@@ -59,6 +59,22 @@ function Setting() {
         })
      
       })
+     
+      //handle changes in users products
+      if(user.name=='anonymous'){
+        user.products.map((userProduct)=>{
+          if(userProduct.id==product.id){
+            userProduct.messageFromAdmin='Sold Out'
+            return   userProduct
+          }
+            else{
+              return   userProduct
+            } 
+        })
+        localStorage.setItem("user",JSON.stringify(user))
+        setUser(user)
+      }
+
 
       //notification about complete chnages
       toastRef.current.click()
@@ -87,7 +103,7 @@ function Setting() {
       <Link  to='/productform/new' className='btn btn-primary btn-sm mt-4 mb-5 p-1 fs-5'>
             Add New Product <i className="fa-solid fa-square-plus"></i>
       </Link>
-      <div class="table-responsive">
+      <div className="table-responsive">
       <table className=" table align-middle  ">
         <thead>
           <tr className="mb-5 text-primary">

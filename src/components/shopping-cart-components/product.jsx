@@ -36,7 +36,9 @@ export default function Product(props) {
     localStorage.setItem('user',JSON.stringify({...user,products:userProducts}))
     setUser({...user,products:userProducts})
     try{
-    await axios.put(`${serverApi}/users/${user.id}`,{...user,products:userProducts})
+      if(user.name!=='anonymous'){
+      await axios.put(`${serverApi}/users/${user.id}`,{...user,products:userProducts})
+      }
     }catch{
       //3-protectin if serevr faild update ui with old data 
       localStorage.setItem('user',JSON.stringify({...UseBeforeEdit}))
@@ -66,7 +68,9 @@ export default function Product(props) {
       setUser({...user,products:userProducts})
       try{
         //2-then update server
+        if(user.name!=='anonymous'){
         await axios.put(`${serverApi}/users/${user.id}`,{...user,products:userProducts})
+        }
       }catch{
        //3-protectin if serevr faild update ui with old data 
        localStorage.setItem('user',JSON.stringify({...UseBeforeEdit}))
@@ -99,7 +103,9 @@ export default function Product(props) {
     setUser({...user,products:userProducts})
     try{
       //2-then update server
-      await axios.put(`${serverApi}/users/${user.id}`,{...user,products:userProducts})
+      if(user.name!=='anonymous'){
+        await axios.put(`${serverApi}/users/${user.id}`,{...user,products:userProducts})
+      }
 
     }catch{
       //3-protectin if serevr faild update ui with old data 

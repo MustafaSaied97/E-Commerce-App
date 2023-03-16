@@ -1,6 +1,6 @@
 // -------------react libraries----------------------------------------------------------------------------------------------
 import React,{useContext,useRef } from 'react'
-import { NavLink,useNavigate} from 'react-router-dom'
+import {Link, NavLink,useNavigate} from 'react-router-dom'
 import axios from "axios"
 import Tippy from '@tippyjs/react';
 import CustomToast from "./react-bootstrap-component/customToast";
@@ -17,8 +17,7 @@ function  NavBar () {
    let navigate= useNavigate()
    function handleLogut(){
       localStorage.removeItem('user')
-      setUser({name:'',email:'',password:'',products:[],id:''})
-     
+      setUser({name:'anonymous',email:'',password:'',products:[],id:''})
       navigate('/',{replace:true})
 
    }
@@ -31,7 +30,7 @@ function  NavBar () {
      
          await axios.delete(`${serverApi}/users/`+user.id)
          localStorage.removeItem('user')
-         setUser({name:'',email:'',password:'',products:[],id:''})
+         setUser({name:'anonymous',email:'',password:'',products:[],id:''})
          toastRef.current.click()
       
 
@@ -49,16 +48,19 @@ function  NavBar () {
 
            {/* ----------------------1------------- */}
            <div className=" navbar-brand p-0 text-white bg-opacity-25 rounded  fs-3">
-              <span className=" text-info fw-bold ">e</span>
+            <Link to='/' style={{textDecoration:'none'}}>
+               <span className=" text-info fw-bold ">e</span>
               <span className=" text-secondary fw-bold ">Commerce App</span>
+            </Link>
+          
             </div>
             {/* ----------------------2------------- */}
             
-            {user.id==""? 
+            {user.id==""&&user.name==""? 
             ""
             : 
             <Tippy content="Cart">     
-              <NavLink   className="navbar-brand  d-lg-none" to="/cart">
+              <NavLink   className="navbar-brand  d-block d-lg-none d-md-none d-sm-none " to="/cart">
                   {productsInCart.filter((p)=>p.messageFromAdmin=='').length==0?
                     <span className=" p-1">
                        <i className="fa-solid fa-cart-arrow-down  fs-5 "></i>
@@ -99,7 +101,7 @@ function  NavBar () {
          
                {/* ----------------------3_2------------- */}
                {
-                  user.id==""?
+                  user.name==""||user.name=="anonymous"?
                   ""
                   :
                   <li className="nav-item dropdown " style={{cursor:"pointer"}} >
@@ -108,7 +110,7 @@ function  NavBar () {
                         <i className="ms-1 fa-regular fa-id-card fs-5"></i>
                      </a>
                      <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark ">
-                       <li><span className="dropdown-item badge text-bg-secondary fs-6" >Uer Info </span></li>
+                       <li><span className="dropdown-item badge text-bg-secondary fs-6" >User Info </span></li>
                        <li><span className="dropdown-item" ><span className='badge text-bg-dark'>Name</span> {user.name}</span></li>
                        <li><span className="dropdown-item" ><span className='badge text-bg-dark'>Email</span> {user.email}</span></li>
                        <li><span className="dropdown-item" ><span className='badge text-bg-dark'>Password</span> {user.password}</span></li>
@@ -158,11 +160,11 @@ function  NavBar () {
             </ul>
             </div>
 
-            {user.id==""? 
+            {user.id==""&&user.name==""? 
             ""
             : 
             <Tippy content="Cart">  
-              <NavLink   className="  d-none d-lg-block text-secondary" to="/cart">
+              <NavLink   className="  d-none d-lg-block d-md-block d-sm-block   text-secondary" to="/cart">
                   {productsInCart.filter((p)=>p.messageFromAdmin=='').length==0?
                     <span className=" ps-1 pe-1 border border-2 border-secondary  rounded ">
                        <i className="fa-solid fa-cart-arrow-down  fs-6 "></i>

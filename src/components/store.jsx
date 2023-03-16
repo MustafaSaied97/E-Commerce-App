@@ -3,6 +3,7 @@ import React,{useContext,useRef,useState,useMemo,useEffect}  from "react";
 import axios from 'axios';
 // components
 import { DataContext } from './context/AppWithProvider';
+import { Link, Outlet } from 'react-router-dom';
 
 
 function Store (){
@@ -84,20 +85,19 @@ function Store (){
     setUser({...user,products:userProducts})
     try{
       //2-then update server
+      if(user.name!=='anonymous'&&user.id!==''){
       await axios.put(`${serverApi}/users/${user.id}`,{...user,products:userProducts})
+      }
     }catch{
       //3-protectin if serevr faild update ui with old data 
       localStorage.setItem('user',JSON.stringify({...UseBeforeEdit}))
       setUser({...UseBeforeEdit})
     }
 
-    
-
-
-
- 
-
   }
+
+
+
   function isUserProductInCart(product){
     for (const userProduct of user.products) {
       if(userProduct.id==product.id){
@@ -243,7 +243,7 @@ function Store (){
                         <div className="p-4 pb-3 " >
                           {/* name */}
                           <div >
-                            <h5 style={{maxHeight: "100px",overflow:"hidden",textOverflow:"ellipsis"}}>{product.name}</h5>
+                            <Link to={`/product-details/${product.id}`} style={{textDecorationLine:'none ',color:'#2a3a49  '}}><h5 style={{maxHeight: "100px",overflow:"hidden",textOverflow:"ellipsis"}}>{product.name}</h5></Link>
                           </div>
                           
                           {/* stars&rating&views */}
@@ -262,7 +262,7 @@ function Store (){
                           {/* add tocart */}
                           <hr/>
                           {
-                            user.id==''?
+                            user.name==""?
                             <div  onClick={warningMessage}>
                               
                                 <span className="btn btn-secondary py-1 px-2">
@@ -320,8 +320,9 @@ function Store (){
              </div>
           </div>  
 
-           
+         
         </>
+        
         
     );
 }

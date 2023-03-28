@@ -116,6 +116,7 @@ function Store (){
   function warningMessage(){
     warning.current.click()
   }
+
     return ( 
         <>
       {/* filteration */}
@@ -130,10 +131,9 @@ function Store (){
       
         </div>
 
-
-        <div  className=" container mt-5 d-flex justify-content-center align-items-center gap-5 " >
+        <div  className=" container mt-5 d-flex justify-content-center align-items-center gap-5 "    >
           
-          <div className=" d-flex flex-column position-relative " style={{width:"800px"}}  onBlur={(e)=>setShowSearchList(false)}>
+          <div className=" d-flex flex-column position-relative " style={{width:"800px"}}   >
 
             <div className="input-group  "style={{height:'36px'}} >
               <input 
@@ -155,36 +155,26 @@ function Store (){
               </span>
 
             </div >
-         
-              {  showSearchList?
-            
-                <ul 
-                  className="list-group  list-group-flush border border-2 border-top-0 rounded  border-top-0 position-absolute  w-100" 
-                  style={{zIndex:'1',marginTop:'36px',maxHeight: "400px",overflow:"auto",textOverflow:"ellipsis"}} 
-                  
-                >
-                     
-                  { allProducts.map((product)=>{  
-                     if(product.name.toLocaleLowerCase().includes(productNameInput.toLocaleLowerCase()) && productNameInput!==''){
-                      return <li 
-                        key={product.id}  
-                        className="list-group-item list-group-item-action" 
-                        onClick={(e)=>{setProductNameInput(product.name);setShowSearchList(false)}}
-                        >
-                         {product.name}
-                       </li>
-                     }
-  
-                   })}
-           
-                </ul>
-               
 
-                :
+            <ul 
+              className={`list-group  list-group-flush border border-2 border-top-0 rounded  border-top-0 position-absolute  w-100 ${showSearchList?'':'d-none'} `}
+              style={{zIndex:'1',marginTop:'36px',maxHeight: "400px",overflow:"auto",textOverflow:"ellipsis"}} 
+            >
+                 
+              { allProducts.map((product)=>{  
+                 if(product.name.toLocaleLowerCase().includes(productNameInput.toLocaleLowerCase()) && productNameInput!==''){
+                  return <li 
+                    key={product.id}  
+                    className="list-group-item list-group-item-action" 
+                    onClick={(e)=>{setProductNameInput(product.name);setShowSearchList(false)}}
+                    >
+                     {product.name}
+                   </li>
+                 }
+               })}
+        
+            </ul>
 
-                ""  
-              }
-  
           </div>
 
           

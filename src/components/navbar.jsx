@@ -39,7 +39,7 @@ function  NavBar () {
  
    return (  
    <>
-     <nav  className="navbar navbar-expand-sm bg-dark sticky-top h-1 " data-bs-theme="dark">
+     <nav  className="navbar navbar-expand-sm bg-dark sticky-top h-1  " data-bs-theme="dark">
       <div className="container-fluid navbar-dark ">
 
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

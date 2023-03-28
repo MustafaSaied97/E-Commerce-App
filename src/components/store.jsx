@@ -175,8 +175,8 @@ function Store (){
 
           <div  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"  >
             <span className="btn btn-secondary opacity-50  " id="basic-addon1" >
-              filter 
-              <i className="fa-solid fa-sliders ms-1"></i>
+              <span className='d-none d-lg-inline'>Filter</span> 
+              <i className="fa-solid fa-sliders ms-lg-1"></i>
               </span> 
           </div>
 

@@ -9,7 +9,7 @@ import { Link, Outlet } from 'react-router-dom';
 function Store (){
   const {serverApi,user,setUser,state,setState}=useContext(DataContext)
   const [productNameInput,setProductNameInput]=useState('')
-  const [showSearchList,setShowSearchList]=useState(true)
+  const [showSearchList,setShowSearchList]=useState(false)
 
   const [productName,setProductName]=useState('')
   const [productPrice,setProductPrice]=useState({min:'',max:''})
@@ -107,12 +107,15 @@ function Store (){
     }
     return false
   }
+  function handleSearch(){
+    setProductName(productNameInput);
+    setShowSearchList(false)
+  }
      
   const warning=useRef()
   function warningMessage(){
     warning.current.click()
   }
-
     return ( 
         <>
       {/* filteration */}
@@ -130,14 +133,23 @@ function Store (){
 
         <div  className=" container mt-5 d-flex justify-content-center align-items-center gap-5 " >
           
-          <div className=" d-flex flex-column position-relative " style={{width:"800px"}} >
+          <div className=" d-flex flex-column position-relative " style={{width:"800px"}}  onBlur={(e)=>setShowSearchList(false)}>
 
             <div className="input-group  "style={{height:'36px'}} >
-              <input type="text" className="form-control" placeholder="Search..." aria-label="Productname" aria-describedby="basic-addon1" value={productNameInput} onChange={(e)=> {setProductNameInput(e.target.value);setShowSearchList(true);setShowSearchNotFound(value)}}  />
+              <input 
+                type="text" 
+                className="form-control" 
+                placeholder="Search..." 
+                aria-label="Productname" 
+                aria-describedby="basic-addon1" 
+                value={productNameInput} 
+                onChange={(e)=> {setProductNameInput(e.target.value);setShowSearchList(true);setShowSearchNotFound(value)}} 
+                onKeyDown={(e)=>{e.key=='Enter' && handleSearch()}}  
+              />
               <span 
                 className="input-group-text  btn btn-secondary opacity-50 " 
                 id="basic-addon1" 
-                onClick={()=>{ setProductName(productNameInput)}}
+                onClick={handleSearch}
               >
                 <i className="fa-solid fa-magnifying-glass"></i>
               </span>
@@ -146,7 +158,11 @@ function Store (){
          
               {  showSearchList?
             
-                <ul className="list-group  list-group-flush border border-2 border-top-0 rounded  border-top-0 position-absolute  w-100" style={{zIndex:'1',marginTop:'36px',maxHeight: "400px",overflow:"auto",textOverflow:"ellipsis"}} onBlur={(e)=>setShowSearchList(false)}>
+                <ul 
+                  className="list-group  list-group-flush border border-2 border-top-0 rounded  border-top-0 position-absolute  w-100" 
+                  style={{zIndex:'1',marginTop:'36px',maxHeight: "400px",overflow:"auto",textOverflow:"ellipsis"}} 
+                  
+                >
                      
                   { allProducts.map((product)=>{  
                      if(product.name.toLocaleLowerCase().includes(productNameInput.toLocaleLowerCase()) && productNameInput!==''){
@@ -228,8 +244,7 @@ function Store (){
 		        <div className="container">
              <div className="row">
               {
-                products.map((product)=>{
-                  return(
+                products.map((product)=>(
                     <div className="col-lg-3 col-md-5 col-sm-6 mb-4  p-4 " key={product.id}>
                       
                       <div className=" rounded-5 shadow bg-white text-center h-100 d-flex flex-column justify-content-between">
@@ -291,15 +306,13 @@ function Store (){
                               }
                               
                             </div>
-                                                            
-
                           }
 
                         </div>
                       </div>
                    </div>
-                  )
-                })
+                 
+                  ))
               }
               
   

@@ -4,7 +4,7 @@ import axios from 'axios';
 // components
 import { DataContext } from './context/AppWithProvider';
 import { Link, Outlet } from 'react-router-dom';
-
+import Loader from "./Loader";
 
 function Store (){
   const {serverApi,user,setUser,state,setState}=useContext(DataContext)
@@ -118,9 +118,8 @@ function Store (){
   }
 
     return ( 
-        <>
-      {/* filteration */}
-      
+      <>
+       {/* filteration */}
        <div ref={searchNotFoundRef} role='button' data-bs-toggle="collapse" data-bs-target="#searchNotFound" aria-expanded='true'aria-controls="searchNotFound" >
         </div> 
         <div className=" collapse" id="searchNotFound">
@@ -229,8 +228,12 @@ function Store (){
       
         </div>
 
-          
+        {/* store section */}
+        {state.products.length==0?
+          <Loader/>
+          :
           <section className="main-content" style={{paddingTop: "50px",paddingBottom: "100px"}} >
+            
 		        <div className="container">
              <div className="row">
               {
@@ -309,22 +312,23 @@ function Store (){
              </div>
             </div>
 	        </section>
+        }
 
-          {/* modal message when anonymous user click on add on cart */}
-          <button ref={warning} type="button" className="btn btn-danger fs-6 d-none" data-bs-toggle="modal" data-bs-target="#Modal" > </button>         
-          <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-             <div className="modal-dialog">
-               <div className="modal-content">
-                 <div className="modal-body">
-                   <h1 className="modal-title fs-5 ms-5 text-secondary " id="ModalLabel">you need to login first !</h1>
-                 </div>
-  
+        {/* modal message when anonymous user click on add on cart */}
+        <button ref={warning} type="button" className="btn btn-danger fs-6 d-none" data-bs-toggle="modal" data-bs-target="#Modal" > </button>         
+        <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+           <div className="modal-dialog">
+             <div className="modal-content">
+               <div className="modal-body">
+                 <h1 className="modal-title fs-5 ms-5 text-secondary " id="ModalLabel">you need to login first !</h1>
                </div>
+
              </div>
-          </div>  
+           </div>
+        </div>  
 
          
-        </>
+      </>
         
         
     );

@@ -1,16 +1,24 @@
 // libraries
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 // components
 import Login from "./login";
 import Signup from "./signup";
+import Loader from "../Loader";
+import {DataContext} from "../context/AppWithProvider"
 
 function Form() {
   const[formState,setFormState]=useState('login')
+  const {state}=useContext(DataContext)
 
   return (
     <>
-      {formState=='login'?<Login setFormState={setFormState}/>:<Signup setFormState={setFormState}/>}
-
+    {state.products.length==0?
+        <Loader/>
+        :
+        <>
+        {formState=='login'?<Login setFormState={setFormState}/>:<Signup setFormState={setFormState}/>}
+        </>
+    }
     </>
   );
 }
